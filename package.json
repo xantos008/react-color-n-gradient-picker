@@ -1,0 +1,69 @@
+{
+  "name": "react-color-n-gradient-picker",
+  "version": "1.0.1",
+  "description": "This is a fork of react-best-gradient-color-picker created by Harry Fox (hxfox1@gmail.com)",
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "package.json",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "prepare": "babel src --out-dir lib --copy-files",
+    "test": "jest",
+    "eslint": "npx eslint . --ext .js,.jsx,.ts,.tsx",
+    "eslint:fix": "npx eslint . --ext .js,.jsx,.ts,.tsx --fix"
+  },
+  "bugs": {
+    "url": "https://github.com/xantos008/react-color-n-gradient-picker/issues"
+  },
+  "homepage": "https://github.com/xantos008/react-color-n-gradient-picker",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xantos008/react-color-n-gradient-picker.git"
+  },
+  "keywords": [
+    "gradient",
+    "react",
+    "color",
+    "picker",
+    "react.js",
+    "tool",
+    "editor",
+    "eyedrop"
+  ],
+  "author": {
+    "name": "xantos008",
+    "email": "amote1234@mail.ru"
+  },
+  "peerDependencies": {
+    "react": "^16.3.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.3.0 || ^17.0.0 || ^18.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.3",
+    "@babel/core": "^7.17.4",
+    "@babel/preset-env": "^7.18.10",
+    "@babel/preset-react": "^7.16.7",
+    "@types/jest": "^29.0.0",
+    "eslint": "8.22.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.1",
+    "eslint-plugin-react": "^7.31.8",
+    "ts-jest": "^28.0.8"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1",
+    "lodash.throttle": "^4.1.1",
+    "tinycolor2": "1.4.2"
+  }
+}
