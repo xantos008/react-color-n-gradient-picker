@@ -6,12 +6,13 @@ import {
   usePaintLight,
   usePaintBright,
 } from '../hooks/usePaintHue'
-import { borderBox, psRl, cResize, handle } from '../style'
+import {borderBox, psRl, cResize, handle, inputWrap, inputLabel} from '../style'
+import tc from "tinycolor2";
 
 const tinycolor = require('tinycolor2')
 
 const AdvancedControls = ({ openAdvanced }) => {
-  const { tinyColor, hue, l, handleChange, s, opacity, squareSize } =
+  const { tinyColor, hue, l, handleChange, inputType, s, opacity, squareSize } =
     usePicker()
   const { v, s: vs } = tinyColor.toHsv()
   const satRef = useRef(null)
@@ -66,12 +67,59 @@ const AdvancedControls = ({ openAdvanced }) => {
           callback={setBright}
           openAdvanced={openAdvanced}
         />
+        {inputType !== 'cmyk' && <HexInput />}
       </div>
     </div>
   )
 }
 
 export default AdvancedControls
+
+
+const HexInput = () => {
+  const { handleChange, tinyColor, opacity } = usePicker()
+  const [disable, setDisable] = useState('')
+  const hex = tinyColor.toHex()
+  const [newHex, setNewHex] = useState(hex)
+
+  useEffect(() => {
+    if (disable !== 'hex') {
+      setNewHex(hex)
+    }
+  }, [tinyColor, disable, hex])
+
+  const hexFocus = () => {
+    setDisable('hex')
+  }
+
+  const hexBlur = () => {
+    setDisable('')
+  }
+
+  const handleHex = (e) => {
+    let tinyHex = tc(e.target.value)
+    setNewHex(e.target.value)
+    if (tinyHex.isValid()) {
+      let { r, g, b } = tinyHex.toRgb()
+      let newColor = `rgba(${r}, ${g}, ${b}, ${opacity})`
+      handleChange(newColor)
+    }
+  }
+
+  return (
+      <div style={{ width: '100%', marginBottom: '5px' }}>
+        <input
+            style={{ ...inputWrap }}
+            value={newHex}
+            onChange={(e) => handleHex(e)}
+            id="rbgcp-input"
+            onFocus={hexFocus}
+            onBlur={hexBlur}
+        />
+        <div style={{ ...inputLabel }}>HEX</div>
+      </div>
+  )
+}
 
 const AdvBar = ({ value, callback, reffy, openAdvanced, label }) => {
   const { squareSize } = usePicker()

@@ -18,7 +18,6 @@ const Inputs = () => {
         flexWrap: 'wrap'
       }}
     >
-      {inputType !== 'cmyk' && <HexInput />}
       {inputType === 'hsl' && <HSLInputs />}
       {inputType === 'rgb' && <RGBInputs />}
       {inputType === 'hsv' && <HSVInputs />}
@@ -38,51 +37,6 @@ const Inputs = () => {
 }
 
 export default Inputs
-
-const HexInput = () => {
-  const { handleChange, tinyColor, opacity } = usePicker()
-  const [disable, setDisable] = useState('')
-  const hex = tinyColor.toHex()
-  const [newHex, setNewHex] = useState(hex)
-
-  useEffect(() => {
-    if (disable !== 'hex') {
-      setNewHex(hex)
-    }
-  }, [tinyColor, disable, hex])
-
-  const hexFocus = () => {
-    setDisable('hex')
-  }
-
-  const hexBlur = () => {
-    setDisable('')
-  }
-
-  const handleHex = (e) => {
-    let tinyHex = tc(e.target.value)
-    setNewHex(e.target.value)
-    if (tinyHex.isValid()) {
-      let { r, g, b } = tinyHex.toRgb()
-      let newColor = `rgba(${r}, ${g}, ${b}, ${opacity})`
-      handleChange(newColor)
-    }
-  }
-
-  return (
-    <div style={{ width: '100%', marginBottom: '5px' }}>
-      <input
-        style={{ ...inputWrap }}
-        value={newHex}
-        onChange={(e) => handleHex(e)}
-        id="rbgcp-input"
-        onFocus={hexFocus}
-        onBlur={hexBlur}
-      />
-      <div style={{ ...inputLabel }}>HEX</div>
-    </div>
-  )
-}
 
 const RGBInputs = () => {
   const { handleChange, r, g, b, opacity } = usePicker()
