@@ -1,6 +1,6 @@
 {
   "name": "react-color-n-gradient-picker",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "This is a fork of react-best-gradient-color-picker created by Harry Fox (hxfox1@gmail.com)",
   "main": "lib/index.js",
   "files": [
@@ -38,8 +38,8 @@
     "email": "amote1234@mail.ru"
   },
   "peerDependencies": {
-    "react": "^16.3.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.3.0 || ^17.0.0 || ^18.0.0"
+    "react": ">=16.3.0",
+    "react-dom": ">=16.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.3",
@@ -64,6 +64,6 @@
   "dependencies": {
     "html2canvas": "^1.4.1",
     "lodash.throttle": "^4.1.1",
-    "tinycolor2": "1.4.2"
+    "tinycolor2": "^1.6.0"
   }
 }
